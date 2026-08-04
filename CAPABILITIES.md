@@ -92,7 +92,6 @@ property `jdk.tls.namedGroups`.
 * `P-384` (`secp384r1`)
 * `P-521` (`secp521r1`)
 * `X25519MLKEM768`
-* `X25519Kyber768Draft00`
 * `MLKEM1024`
 
 `X25519`, `P-256` and `P-384` are enabled by default.

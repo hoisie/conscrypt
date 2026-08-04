@@ -295,8 +295,6 @@ final class NativeSsl {
                 return NativeConstants.NID_secp521r1;
             case "X25519MLKEM768":
                 return NativeConstants.NID_X25519MLKEM768;
-            case "X25519Kyber768Draft00":
-                return NativeConstants.NID_X25519Kyber768Draft00;
             case "MLKEM1024":
                 return NativeConstants.NID_ML_KEM_1024;
             default:

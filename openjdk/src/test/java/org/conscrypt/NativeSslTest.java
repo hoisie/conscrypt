@@ -45,8 +45,6 @@ public final class NativeSslTest {
                           NativeSsl.toBoringSslGroups(new String[] {"secp521r1"}));
         assertArrayEquals(new int[] {NativeConstants.NID_X25519MLKEM768},
                           NativeSsl.toBoringSslGroups(new String[] {"X25519MLKEM768"}));
-        assertArrayEquals(new int[] {NativeConstants.NID_X25519Kyber768Draft00},
-                          NativeSsl.toBoringSslGroups(new String[] {"X25519Kyber768Draft00"}));
         assertArrayEquals(new int[] {NativeConstants.NID_ML_KEM_1024},
                           NativeSsl.toBoringSslGroups(new String[] {"MLKEM1024"}));
     }
@@ -63,6 +61,11 @@ public final class NativeSslTest {
         assertArrayEquals(
                 new int[] {NativeConstants.NID_X25519},
                 NativeSsl.toBoringSslGroups(new String[] {"Unknown", "X25519", "Unknown2"}));
+        // BoringSSL no longer offers X25519Kyber768Draft00, so it must be dropped like any
+        // other unknown group rather than passed on and rejected along with the whole list.
+        assertArrayEquals(
+                new int[] {NativeConstants.NID_X25519},
+                NativeSsl.toBoringSslGroups(new String[] {"X25519Kyber768Draft00", "X25519"}));
     }
 
     @Test
