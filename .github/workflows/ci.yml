@@ -130,13 +130,13 @@ jobs:
           mkdir -p "$BORINGSSL_HOME/build.x86"
           pushd "$BORINGSSL_HOME/build.x86"
           cmake -DCMAKE_POSITION_INDEPENDENT_CODE=TRUE -DCMAKE_BUILD_TYPE=Release -DCMAKE_OSX_ARCHITECTURES=x86_64 -GNinja ..
-          ninja
+          ninja crypto ssl
           popd
 
           mkdir -p "$BORINGSSL_HOME/build.arm"
           pushd "$BORINGSSL_HOME/build.arm"
           cmake -DCMAKE_POSITION_INDEPENDENT_CODE=TRUE -DCMAKE_BUILD_TYPE=Release -DCMAKE_OSX_ARCHITECTURES=arm64 -GNinja ..
-          ninja
+          ninja crypto ssl
           popd
 
       - name: Build BoringSSL 64-bit Linux
@@ -146,7 +146,7 @@ jobs:
           mkdir -p "$BORINGSSL_HOME/build64"
           pushd "$BORINGSSL_HOME/build64"
           cmake -DCMAKE_POSITION_INDEPENDENT_CODE=TRUE -DCMAKE_BUILD_TYPE=Release -GNinja ..
-          ninja
+          ninja crypto ssl
           popd
 
       - name: Build BoringSSL AArch64 Linux
@@ -162,7 +162,7 @@ jobs:
                 -DCMAKE_POSITION_INDEPENDENT_CODE=TRUE \
                 -DCMAKE_BUILD_TYPE=Release \
                 -GNinja ..
-          ninja
+          ninja crypto ssl
           popd
 
       - name: Set up MSVC paths on Windows
@@ -178,7 +178,7 @@ jobs:
           mkdir build64
           pushd build64
           cmake -DCMAKE_POSITION_INDEPENDENT_CODE=TRUE -DCMAKE_BUILD_TYPE=Release -DCMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded -GNinja ..
-          ninja
+          ninja crypto ssl
           popd
 
       - name: Setup Android environment
@@ -330,7 +330,7 @@ jobs:
           mkdir -p "$BORINGSSL_HOME/build64"
           pushd "$BORINGSSL_HOME/build64"
           cmake -DCMAKE_POSITION_INDEPENDENT_CODE=TRUE -DCMAKE_BUILD_TYPE=Release -GNinja ..
-          ninja
+          ninja crypto ssl
           popd
 
       - name: Build BoringSSL AArch64 Linux
@@ -345,7 +345,7 @@ jobs:
                 -DCMAKE_POSITION_INDEPENDENT_CODE=TRUE \
                 -DCMAKE_BUILD_TYPE=Release \
                 -GNinja ..
-          ninja
+          ninja crypto ssl
 
       # TODO(prb) remove build dependency above and go back to this.
       # - name: Make fake BoringSSL directories
